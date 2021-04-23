@@ -1,1 +1,124 @@
-<p>components works!</p>
+<div class="jumbotron">
+    <h1 class="display-5">Administrador de personas vacunadas</h1>
+    <p class="lead"> Sitio web que permite administrar a las personas que han sido vacunadas</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h5>Lista de vacunados</h5> 
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-success" (click)="getPersonas()">Refresh</button>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-group">
+                    <li *ngFor="let Personas personas List; let i = index"
+                    class="list-group-item list-group-item-action"
+                    (click)="getPersonas(i)">
+                    {{ Personas.nombre }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="col">
+            <div class="card" *ngIf="visibleSelectedPersonas">
+                <div class="card-body">
+                    <div class="card-header">
+                        <h5>Persona seleccionada</h5>
+                    </div>
+                </div>
+                <form [formGroup]="editPersonasForm" (ngSubmit)="editPersonas()">
+                    <div class="form-group">
+                        <label>nombre</label>
+                        <input [class.is-invalid]="editPersonasForm.get('PersonasNombreEdit').touched && editPersonasForm.get('PersonasNombreEdit').invalid" 
+                        type="text" class="form-control" formControlName="PersonasNombreEdit" placeholder="Pon el nombre de la persona:" [(ngModel)] = "selectedPersona.nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>apellidos</label>
+                        <input [class.is-invalid]="editPersonasForm.get('PersonasApellidosEdit').touched && editPersonasForm.get('PersonasApellidosEdit').invalid" 
+                        type="text" class="form-control" formControlName="PersonasApellidosEdit" placeholder="Pon el apellido de la persona:" [(ngModel)] = "selectedPersona.apellidos">
+                    </div>
+                    <div class="form-group">
+                        <label>fecha nacimiento</label>
+                        <input [class.is-invalid]="editPersonasForm.get('personasFechaNEdit').touched && editPersonasForm.get('PersonasFechaNEdit').invalid" 
+                        type="date" class="form-control" formControlName="PersonasfechaNEdit" placeholder="Pon la fecha de nacimiento de la persona:" [(ngModel)] = "selectedPersona.fechaN">
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha vacunacion/label>
+                        <input [class.is-invalid]="editPersonasForm.get('personasFechaVEdit').touched && editPersonasForm.get('PersonasFechaVEdit').invalid" 
+                        type="date" class="form-control" formControlName="PersonasFechaVEdit" placeholder="Pon la fecha de vacunacion de la persona:" [(ngModel)] = "selectedPersona.fechaV">
+                    </div>
+                    <div class="form-group">
+                        <label>profesion</label>
+                        <input [class.is-invalid]="editPersonasForm.get('personasProfesionEdit').touched && editPersonasForm.get('PersonasProfesionEdit').invalid" 
+                        type="text" class="form-control" formControlName="PersonasProfesionEdit" placeholder="Pon la profesion de la persona:" [(ngModel)] = "selectedPersona.profesion">
+                    </div>
+                    <div class="form-group">
+                        <label>vacuna</label>
+                        <input [class.is-invalid]="editPersonasForm.get('personasVacunaEdit').touched && editPersonasForm.get('PersonasVacunaEdit').invalid" 
+                        type="text" class="form-control" formControlName="PersonasVacunaEdit" placeholder="Pon la vacuna de la persona:" [(ngModel)] = "selectedPersona.vacuna">
+                    </div>
+                    <div class="span6" style="float: none; margin: 0 auto;">
+                        <button class="btn btn-info" type="submit" [disabled]="!editPersonasForm.valid">Edita Persona</button> 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header">
+                        <h5>Añade Persona</h5>
+                    </div>
+                </div>
+                <form [formGroup]="addPersonaForm" (ngSubmit)="addPersona()">
+                    <div class="form-group">
+                        <label>nombre</label>
+                        <input [class.is-invalid]="addPersonasForm.get('PersonasNombreEdit').touched && addPersonasForm.get('PersonasNombreEdit').invalid" 
+                        type="text" class="form-control" formControlName="PersonasNombreEdit" placeholder="Pon el nombre de la persona:" [(ngModel)] = "selectedPersona.nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>apellidos</label>
+                        <input [class.is-invalid]="addPersonasForm.get('PersonasApellidosEdit').touched && addPersonasForm.get('PersonasApellidosEdit').invalid" 
+                        type="text" class="form-control" formControlName="PersonasApellidosEdit" placeholder="Pon el apellido de la persona:" [(ngModel)] = "selectedPersona.apellidos">
+                    </div>
+                    <div class="form-group">
+                        <label>fecha nacimiento</label>
+                        <input [class.is-invalid]="addPersonasForm.get('personasFechaNEdit').touched && addPersonasForm.get('PersonasFechaNEdit').invalid" 
+                        type="date" class="form-control" formControlName="PersonasfechaNEdit" placeholder="Pon la fecha de nacimiento de la persona:" [(ngModel)] = "selectedPersona.fechaN">
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha vacunacion/label>
+                        <input [class.is-invalid]="addPersonasForm.get('personasFechaVEdit').touched && addPersonasForm.get('PersonasFechaVEdit').invalid" 
+                        type="date" class="form-control" formControlName="PersonasFechaVEdit" placeholder="Pon la fecha de vacunacion de la persona:" [(ngModel)] = "selectedPersona.fechaV">
+                    </div>
+                    <div class="form-group">
+                        <label>profesion</label>
+                        <input [class.is-invalid]="addPersonasForm.get('personasProfesionEdit').touched && addPersonasForm.get('PersonasProfesionEdit').invalid" 
+                        type="text" class="form-control" formControlName="PersonasProfesionEdit" placeholder="Pon la profesion de la persona:" [(ngModel)] = "selectedPersona.profesion">
+                    </div>
+                    <div class="form-group">
+                        <label>vacuna</label>
+                        <input [class.is-invalid]="addPersonasForm.get('personasVacunaEdit').touched && addPersonasForm.get('PersonasVacunaEdit').invalid" 
+                        type="text" class="form-control" formControlName="PersonasVacunaEdit" placeholder="Pon la vacuna de la persona:" [(ngModel)] = "selectedPersona.vacuna">
+                    </div>
+                    <div class="span6" style="float: none; margin: 0 auto;">
+                        <button class="btn btn-info" type="submit" [disabled]="!addPersonasForm.valid">Crea una nueva Persona</button> 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
