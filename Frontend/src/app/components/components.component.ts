@@ -25,6 +25,14 @@ export class ComponentsComponent implements OnInit {
     personasProfesionInput: new FormControl('', [Validators.required, Validators.min(4)]),
     personasVacunaInput: new FormControl('', [Validators.required, Validators.min(4)]),
   });
+  editPersonaForm = new FormGroup({
+    personasNameInput: new FormControl('', [Validators.required, Validators.min(0)]),
+    personasApellidosInput: new FormControl('', [Validators.required, Validators.min(4)]),
+    personasFechaNInput: new FormControl('', [Validators.required, Validators.min(4)]),
+    personasFechaVInput: new FormControl('', [Validators.required, Validators.min(4)]),
+    personasProfesionInput: new FormControl('', [Validators.required, Validators.min(4)]),
+    personasVacunaInput: new FormControl('', [Validators.required, Validators.min(4)]),
+  });
 
   constructor(
     private personasService: PersonasService

@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import personas from '../models/personas';
-import Cluster from '../models/personas';
 
 class PersonasController {
 // Esta función devuelve la lista con todas las diferentes personas

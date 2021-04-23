@@ -24,7 +24,7 @@ app.use(cors());                                //Para usar CORS in HTTP
 
 //ROUTES
 app.get('/test', (req: Request, res: Response) => {
-    res.send(`Hello World! I'm listening at port ${app.get('port')}`);
+    res.send(`Escuchando en puerto:  ${app.get('port')}`);
 });
 
 app.use('', Router);                            //Usamos las routes que hemos definido en index.ts
