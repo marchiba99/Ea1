@@ -20,8 +20,8 @@ class PersonasController {
         try{   
             let PersonaD = await personas.findById(req.params.id);
             if(!personas){
-                console.log(`\nNo se ha encontrado esta persona: ${req.params.clusterid} `);
-                res.status(404).json(`No se ha encontrado esta persona ${req.params.clusterid} `);
+                console.log(`\nNo se ha encontrado esta persona: ${req.params.personaid} `);
+                res.status(404).json(`No se ha encontrado esta persona ${req.params.personaid} `);
             }
             else
                 res.status(200).json(personas);
